@@ -12,18 +12,18 @@ public class Main {
     public static void menu() {
         int choice = -1;
         while (choice != 0) {
-            System.out.println("Press 1 to log in. " +
-                    "\n Press 2 to register a new account. " +
-                    "\n Press 0 to exit");
+            System.out.println("\n Nhấn phím 1 để đăng nhập." +
+                    "\n Nhấn phím 2 để đăng ký tài khoản mới." +
+                    "\n Nhấn 0 để thoát");
             choice = validate.inputInterger();
             switch (choice) {
                 case 1:
                     login();
                     break;
                 case 2:
-                    System.out.println("Please enter the following information");
+                    System.out.println("Vui lòng nhập các thông tin sau");
                     employeeView.addNewMember();
-                    System.out.println("Successful account registration!");
+                    System.out.println("Đăng ký tài khoản thành công!");
                     break;
             }
         }
@@ -39,16 +39,16 @@ public class Main {
     public static void login() {
         int i = 0;
         while (i < 3) {
-            System.out.println("Enter username: ");
+            System.out.println("Nhập tên đăng nhập: ");
             String username = validate.checkEmpty();
-            System.out.println("Enter password: ");
+            System.out.println("Nhập mật khẩu: ");
             int password = validate.inputInterger();
             if (checkLoginAdmin(username, password)) {
                 int choice = -1;
                 while (choice != 0) {
-                    System.out.println("Press 1 to access employee management. " +
-                            "\n Press 2 to access employee account management. " +
-                            "\n Press 0 to exit");
+                    System.out.println("\n Nhấn phím 1 để truy cập quản lý nhân viên." +
+                            "\n Nhấn phím 2 để truy cập quản lý tài khoản nhân viên." +
+                            "\n Nhấn 0 để thoát");
                     choice = validate.inputInterger();
                     switch (choice) {
                         case 1:
@@ -67,9 +67,9 @@ public class Main {
                 employeeView.employeeMenu(username, password);
                 break;
             } else
-                System.out.println("username or password is incorrect " + (i + 1));
+                System.out.println("Tên đăng nhập hoặc mật khẩu của bạn không chính xác " + (i + 1));
             if (i == 2)
-                System.out.println("You entered the wrong input more than 3 times, go back to the menu");
+                System.out.println("Bạn đã nhập sai hơn 3 lần, quay lại menu ");
             i++;
         }
     }
@@ -78,15 +78,15 @@ public class Main {
         int choice = -1;
         while (choice != 9) {
             System.out.println("MENU: " +
-                    "\n Press 1 to add staff. " +
-                    "\n Press 2 to edit employee information. " +
-                    "\n Press 3 to display, " +
-                    "\n Press 4 to search for employees. " +
-                    "\n Press 5 to check employee status. " +
-                    "\n Press 6 to change employee status. " +
-                    "\n Press 7 to delete the employee. " +
-                    "\n Press 8 to view account information. " +
-                    "\n Press 9 to log out.");
+                    "\n Nhấn phím 1 để thêm nhân viên." +
+                    "\n Nhấn phím 2 để chỉnh sửa thông tin nhân viên." +
+                    "\n Nhấn phím 3 để hiển thị," +
+                    "\n Nhấn phím 4 để tìm kiếm nhân viên." +
+                    "\n Nhấn phím 5 để kiểm tra trạng thái nhân viên." +
+                    "\n Nhấn phím 6 để thay đổi trạng thái nhân viên." +
+                    "\n Nhấn phím 7 để xóa nhân viên." +
+                    "\n Nhấn phím 8 để xem thông tin tài khoản." +
+                    "\n Nhấn phím 9 để đăng xuất.");
             choice = validate.inputInterger();
             switch (choice) {
                 case 1:

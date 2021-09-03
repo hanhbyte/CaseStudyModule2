@@ -12,7 +12,7 @@ public class Validate {
                 number = Integer.parseInt(scanner.nextLine());
                 break;
             }catch (Exception e){
-                System.out.println("Keep input must be numeric\nretype : ");
+                System.out.println("Phải là số!!\nNhập lại: ");
             }
         }
         return number;
@@ -24,7 +24,7 @@ public class Validate {
             if (s.trim().isEmpty()!= true){
                 return s;
             }else {
-                System.out.println("Data is blank, please re-enter\nretype : ");
+                System.out.println("Dữ liệu trống, vui lòng nhập lại\nNhập lại : ");
             }
         }
     }

@@ -28,13 +28,13 @@ public class ManagerAccountView {
         int index = 0;
         while (true){
             String useName = checkInputUseName();
-            System.out.println("Enter password");
+            System.out.println("Nhập mật khẩu: ");
             int password = validate.inputInterger();
             index = getIndexOfEmployee(useName, password);
             if (index != -1){
                 break;
             }else
-                System.out.println("employee does not exist or entered wrong username and password!!");
+                System.out.println("Nhân viên không tồn tại hoặc nhập sai tên người dùng và mật khẩu !!");
         }
         return employeeList.get(index);
     }
@@ -44,30 +44,32 @@ public class ManagerAccountView {
     }
 
     public void deleteManagerAccount(){
-        System.out.println("Enter the username of the account you want to delete");
+        System.out.println("Nhập tên người dùng của tài khoản bạn muốn xóa: ");
         String useName = checkUseName();
         managerAccountController.delete(useName);
     }
 
     public String checkInputUseName(){
         while (true){
-            System.out.println("Enter username: ");
+            System.out.println("Nhập tên đăng nhập: ");
             String usename = validate.checkEmpty();
             if (managerAccountController.getIndexOfUseName(usename)== -1)
                 return usename;
             else
-                System.out.println("username already exists!!");
+                System.out.println("\n" +
+                        "tên đăng kí đã được sử dụng!!");
         }
     }
 
     public String checkUseName(){
         while (true){
-            System.out.println("Enter username");
+            System.out.println("Nhập tên đăng nhập");
             String username = validate.checkEmpty();
             if (managerAccountController.getIndexOfUseName(username)== -1)
                 return username;
             else
-                System.out.println("username does not exist!!");
+                System.out.println("\n" +
+                        "Tên đăng nhập không tồn tại!!");
         }
     }
 
@@ -75,7 +77,7 @@ public class ManagerAccountView {
         List<Employee> managerAccountList = managerAccountController.getManagerAccountList();
         for (Employee employee : managerAccountList){
             if (employee.getUseName().equals(username) && employee.getPassword() == password){
-                System.out.println("account information:\n" +employee+" salary income"+employee.calculationSalary());
+                System.out.println("thông tin tài khoản\n" +employee+" lương là:"+employee.calculationSalary());
             }
         }
     }
@@ -100,22 +102,23 @@ public class ManagerAccountView {
     public void adminMenu(){
         int choice = -1;
         while (choice != 0){
-            System.out.println("Press 1 to add an employee management account. " +
-                    "\n press 2 to delete the employee management account. " +
-                    "\n press 3 to display the user management login accounts. " +
-                    "\n press 0 to exit.\n");
+            System.out.println("\n Nhấn phím 1 để thêm tài khoản quản lý nhân viên." +
+                    "\n Nhấn phím 2 để xóa tài khoản quản lý nhân viên." +
+                    "\n Nhấn phím 3 để hiển thị tài khoản đăng nhập quản lý người dùng." +
+                    "\n Nhấn phím 0 để thoát.");
             choice = validate.inputInterger();
             switch (choice){
                 case 1:
-                    System.out.println("Enter the username and password of the employee you want to add to the management position");
+                    System.out.println("Nhập tên người dùng và mật khẩu của nhân viên bạn muốn thêm vào vị trí quản lý");
                     addManagerAccount();
-                    System.out.println("added account login successful !!");
+                    System.out.println("Đã thêm tài khoản thành công");
                     break;
                 case 2:
                     deleteManagerAccount();
                     break;
                 case 3:
-                    System.out.println("display a list of management login account information");
+                    System.out.println("\n" +
+                            "hiển thị danh sách thông tin tài khoản đăng nhập quản lý");
                     showManagerAccountList();
                     break;
             }

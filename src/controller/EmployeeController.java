@@ -86,7 +86,7 @@ public class EmployeeController {
     public int getIndexOfUserNamePassword(String name, int password) {
         int index = -1;
         for (int i = 0; i < employeeList.size(); i++) {
-            Employee employee = employeeList.get(index);
+            Employee employee = employeeList.get(i);
             if (employee.getUseName().equals(name) && employee.getPassword() == password) {
                 index = i;
                 break;
@@ -118,9 +118,9 @@ public class EmployeeController {
 
     public void updateStatus(String id) {
         int index = getIndexOfId(id);
-        if (employeeList.get(index).getStatus().equals("doing")) {
-            employeeList.get(index).setStatus("took a break");
-        } else employeeList.get(index).setStatus("doing");
+        if (employeeList.get(index).getStatus().equals("Đang làm")) {
+            employeeList.get(index).setStatus("Đã nghỉ");
+        } else employeeList.get(index).setStatus("Đang làm");
         FileEmployee.writeFile(employeeList, "employee.txt");
     }
 
