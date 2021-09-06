@@ -10,7 +10,7 @@ public class ManagerAccountView {
     private List<Employee> employeeList = FileEmployee.readFile("employee.txt");
     private List<Employee> managerAccountList = FileEmployee.readFile("account.txt");
     private ManagerAccountController managerAccountController = new ManagerAccountController(managerAccountList);
-    private Validate validate = new Validate();
+    private Validate validateManager = new Validate();
 
     public int getIndexOfEmployee(String useName, int password){
         int index = -1;
@@ -29,7 +29,7 @@ public class ManagerAccountView {
         while (true){
             String useName = checkInputUseName();
             System.out.println("Nhập mật khẩu: ");
-            int password = validate.inputInterger();
+            int password = validateManager.inputInterger();
             index = getIndexOfEmployee(useName, password);
             if (index != -1){
                 break;
@@ -52,24 +52,22 @@ public class ManagerAccountView {
     public String checkInputUseName(){
         while (true){
             System.out.println("Nhập tên đăng nhập: ");
-            String usename = validate.checkEmpty();
+            String usename = validateManager.checkEmpty();
             if (managerAccountController.getIndexOfUseName(usename)== -1)
                 return usename;
             else
-                System.out.println("\n" +
-                        "tên đăng kí đã được sử dụng!!");
+                System.out.println("Tên đăng kí đã được sử dụng!!");
         }
     }
 
     public String checkUseName(){
         while (true){
             System.out.println("Nhập tên đăng nhập");
-            String username = validate.checkEmpty();
+            String username = validateManager.checkEmpty();
             if (managerAccountController.getIndexOfUseName(username)== -1)
                 return username;
             else
-                System.out.println("\n" +
-                        "Tên đăng nhập không tồn tại!!");
+                System.out.println("Tên đăng nhập không tồn tại!!");
         }
     }
 
@@ -106,7 +104,7 @@ public class ManagerAccountView {
                     "\n Nhấn phím 2 để xóa tài khoản quản lý nhân viên." +
                     "\n Nhấn phím 3 để hiển thị tài khoản đăng nhập quản lý người dùng." +
                     "\n Nhấn phím 0 để thoát.");
-            choice = validate.inputInterger();
+            choice = validateManager.inputInterger();
             switch (choice){
                 case 1:
                     System.out.println("Nhập tên người dùng và mật khẩu của nhân viên bạn muốn thêm vào vị trí quản lý");

@@ -77,7 +77,7 @@ public class Main {
     public static void employeeManagerMenu(String username, int password) {
         int choice = -1;
         while (choice != 9) {
-            System.out.println("MENU: " +
+            System.out.println("\n\nMENU: " +
                     "\n Nhấn phím 1 để thêm nhân viên." +
                     "\n Nhấn phím 2 để chỉnh sửa thông tin nhân viên." +
                     "\n Nhấn phím 3 để hiển thị," +

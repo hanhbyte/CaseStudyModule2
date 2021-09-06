@@ -11,64 +11,64 @@ import java.util.List;
 public class EmployeeView {
     private List<Employee> employeeList = FileEmployee.readFile("employee.txt");
     private EmployeeController manager = new EmployeeController("Manager", employeeList);
-    private Validate validate = new Validate();
+    private Validate validateEmployee = new Validate();
 
     public Employee newEmployeeFullTime(){
         System.out.println("Nhập tên: ");
-        String name = validate.checkEmpty();
+        String name = validateEmployee.checkEmpty();
         String id = checkInputId();
         System.out.println("Nhập tuổi: ");
-        int age = validate.inputInterger();
+        int age = validateEmployee.inputInterger();
         System.out.println("Nhập quê quán: ");
-        String address = validate.checkEmpty();
+        String address = validateEmployee.checkEmpty();
         System.out.println("Nhập số điện thoại: ");
-        int phoneNumber = validate.inputInterger();
+        int phoneNumber = validateEmployee.inputInterger();
         System.out.println("Nhập trạng thái: ");
-        String status = validate.checkEmpty();
+        String status = validateEmployee.checkEmpty();
         String useName = checkInputUseName();
         System.out.println("nhập mật khẩu: ");
-        int password = validate.inputInterger();
+        int password = validateEmployee.inputInterger();
         System.out.println("Nhập tiền lương : ");
-        int salary = validate.inputInterger();
+        int salary = validateEmployee.inputInterger();
         System.out.println("Nhập tiền thưởng: ");
-        int bonus = validate.inputInterger();
+        int bonus = validateEmployee.inputInterger();
         System.out.println("Nhập tiền phạt: ");
-        int fine = validate.inputInterger();
+        int fine = validateEmployee.inputInterger();
         Employee employeeFullTime = new EmployeeFullTime(name, id, age, address, phoneNumber, status, useName, password, salary, bonus, fine);
         return employeeFullTime;
     }
 
     public Employee newEmployeePartTime(){
         System.out.println("Nhập tên: ");
-        String name = validate.checkEmpty();
+        String name = validateEmployee.checkEmpty();
         String id = checkInputId();
         System.out.println("Nhập tuổi: ");
-        int age = validate.inputInterger();
+        int age = validateEmployee.inputInterger();
         System.out.println("Nhập quê quán: ");
-        String address = validate.checkEmpty();
+        String address = validateEmployee.checkEmpty();
         System.out.println("nhập số điện thoại: ");
-        int phoneNumber = validate.inputInterger();
+        int phoneNumber = validateEmployee.inputInterger();
         System.out.println("Nhập trạng thái: ");
-        String status = validate.checkEmpty();
+        String status = validateEmployee.checkEmpty();
         String useName = checkInputUseName();
         System.out.println("Nhập mật khẩu: ");
-        int password = validate.inputInterger();
+        int password = validateEmployee.inputInterger();
         System.out.println("Nhập lương tính theo thời gian: ");
-        int salaryTime = validate.inputInterger();
+        int salaryTime = validateEmployee.inputInterger();
         System.out.println("Nhập thòi gian làm: ");
-        int wordTime = validate.inputInterger();
+        int wordTime = validateEmployee.inputInterger();
         Employee employeePartTime = new EmployeePartTime(name, id, age, address, phoneNumber, status, useName, password, salaryTime, wordTime);
         return employeePartTime;
     }
 
     public void addEmployee(){
         System.out.println("Nhập số lượng nhân viên bạn muốn thêm: ");
-        int number = validate.inputInterger();
+        int number = validateEmployee.inputInterger();
         int i = 0;
         while (i < number){
             System.out.println("Ấn 1 để thêm nhân viên Full-Time");
             System.out.println("Ấn 2 để thêm nhân viên Part-TIme");
-            int choice = validate.inputInterger();
+            int choice = validateEmployee.inputInterger();
             switch (choice){
                 case 1:
                     System.out.println("Nhập thông tin nhân viên : "+(i + 1));
@@ -91,7 +91,7 @@ public class EmployeeView {
         if (employeeList.get(index).getStatus() == null){
             System.out.println("Nhấn phím 1 để chỉnh nhân viên Full-Time:");
             System.out.println("Nhấn phím 2 để chỉnh nhân viên Part-Time:");
-            int choice = validate.inputInterger();
+            int choice = validateEmployee.inputInterger();
             switch (choice){
                 case 1:
                     System.out.println("Nhập thông tin: ");
@@ -165,7 +165,7 @@ public class EmployeeView {
     public String checkId(){
         while (true){
             System.out.println("Nhập id :");
-            String id = validate.checkEmpty();
+            String id = validateEmployee.checkEmpty();
             if (manager.getIndexOfId(id) !=1){
                 return id;
             }else System.out.println("Id đã nhập không có trong danh sách nhân viên");
@@ -175,7 +175,7 @@ public class EmployeeView {
     public String checkName(){
         while (true){
             System.out.println("Nhập tên: ");
-            String name = validate.checkEmpty();
+            String name = validateEmployee.checkEmpty();
             for (Employee employee : manager.getEmployeeList()){
                 if (employee.getName().equals(name))
                     return name;
@@ -187,7 +187,7 @@ public class EmployeeView {
     public String checkInputId(){
         while (true){
             System.out.println("Nhập id ");
-            String id = validate.checkEmpty();
+            String id = validateEmployee.checkEmpty();
             if (manager.getIndexOfId(id)!=1){
                 return id;
             }else {
@@ -199,7 +199,7 @@ public class EmployeeView {
     public String checkInputUseName(){
         while (true){
             System.out.println("Nhập tên : ");
-            String nameUse = validate.checkEmpty();
+            String nameUse = validateEmployee.checkEmpty();
             if (manager.getIndexOfUserName(nameUse) == -1){
                 return nameUse;
             }else {
@@ -223,9 +223,9 @@ public class EmployeeView {
                     "\n Nhấn phím 4 để hiển thị nhân viên PartTime." +
                     "\n Nhấn phím 5 để hiển thị danh sách nhân viên đang hoạt động." +
                     "\n nhấn phím 6 để hiển thị nhân viên đang nghỉ việc." +
-                    "\n nhấn phím   0 để quay lại.");
+                    "\n nhấn phím 0 để quay lại.");
 
-            choice = validate.inputInterger();
+            choice = validateEmployee.inputInterger();
             switch (choice){
                 case 1:
                     System.out.println("Danh sách nhân viên");
@@ -264,17 +264,17 @@ public class EmployeeView {
             Employee employee = manager.getEmployeeList().get(index);
             System.out.println(employee+"Số lương là : "+employee.calculationSalary());
             if (employee.getStatus().equals("Chưa được nhận việc")){
-                System.out.println("Đăng kí làm nhân viên Full-Time" +
-                        "\n hoặc đăng kí làm nhân viên PArt-Time");
+                System.out.println("\nĐăng kí làm nhân viên Full-Time" +
+                        "\nhoặc đăng kí làm nhân viên PArt-Time");
             }
         }
     }
     public void employeeMenu(String useName, int password){
         int choice = -1;
         while (choice != 0){
-            System.out.println("\nNhấn phím 1 để xem thông tin của bạn " +
-                    "\nNhấn 0 để thoát");
-            choice = validate.inputInterger();
+            System.out.println("\nNhấn phím 1 để xem thông tin của bạn. " +
+                    "\nNhấn 0 để thoát.");
+            choice = validateEmployee.inputInterger();
             if (choice == 1){
                 showEmployee(useName, password);
             }
@@ -283,18 +283,18 @@ public class EmployeeView {
 
     public Employee newMember(){
         System.out.println("Nhập tên: ");
-        String name = validate.checkEmpty();
+        String name = validateEmployee.checkEmpty();
         String id = checkId();
         System.out.println("Nhập tuổi: ");
-        int age = validate.inputInterger();
+        int age = validateEmployee.inputInterger();
         System.out.println("Nhập quê quán: ");
-        String address = validate.checkEmpty();
+        String address = validateEmployee.checkEmpty();
         System.out.println("Nhập số điện thoại: ");
-        int phoneNumber = validate.inputInterger();
+        int phoneNumber = validateEmployee.inputInterger();
         String status = "Chưa nhận được việc";
         String useName= checkInputUseName();
         System.out.println("Nhập mật khẩu");
-        int password = validate.inputInterger();
+        int password = validateEmployee.inputInterger();
         Employee member = new Employee(name, id, age, address, phoneNumber, status, useName, password);
         return member;
     }
